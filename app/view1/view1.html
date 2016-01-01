@@ -1,1 +1,46 @@
 <p>This is the partial for view 1.</p>
+
+<div class="form" ng-controller="View1Ctrl">
+
+	<div class="container header">
+		<div class="row">
+			<div class="header-wrapper">
+				<div class="col-md-8 col-md-offset-2">
+					<img class="img-responsive" alt="Responsive image" src="assets/images/nwna-safety-masthead.png" alt="NWNA">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<p>Please select your business unit:</p>
+		<select ng-model="selectedItem" 
+		ng-options="item as item.name for item in items"></select>
+
+		{{selectedItem | json}}
+
+		<p ng-show="selectedItem === 'PraiseSongList'"> SHOW PRAISE COZ PRAISE SONG LIST WAS SELECTED IN DROPDOWN</p>
+		<p ng-show="selectedItem === 'GENERAL'"> SHOW GENERAL, WAS SELECTED in DROPDOWN</p>
+
+
+		<p ng-show="incidentForm.unit.$invalid && (!incidentForm.unit.$pristine || submitted===true)" class="help-block error-message"><i class="fa fa-exclamation-circle"></i>Business Unit is required.</p>
+
+	</div>
+
+	<p>Where did the observation take place?</p>
+	<div class="form-group inner-addon left-addon">
+		<i class="fa fa-map-marker"></i>
+		<input id="locationInputField" ng-blur="fieldBlur()" ng-focus="fieldFocus()" class="form-control" type="text" placeholder="Location" name="location" ng-model="formInfo.location" required/> <!--<![endif]-->
+	</div>
+	<p ng-show="incidentForm.location.$invalid && (!incidentForm.location.$pristine || submitted===true)" class="help-block error-message"><i class="fa fa-exclamation-circle"></i>Location is required.</p>
+
+	<!--     error messages -->
+	<p ng-show="formInfo.injured=='yes'" class="help-block error-message error-injury"><i class="fa fa-exclamation-circle"></i>Do not use this form for an injury report. Please inform your supervisor of the incident.  </p>
+	<!--     error messages -->
+
+	<div><button class="btn-alt btn-inverse btn-lg btn-submit" type="submit" analytics-event="FormSubmitButtonClick" analytics-category="Form" analytics-on>Submit</button></div>
+
+</form>
+
+</div>
+</div>

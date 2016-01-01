@@ -9,6 +9,11 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', function($scope) {
+
+  $scope.items = [
+    { id: 1, name: 'PraiseSongList'},
+    { id: 2, name: 'General'}];
+  $scope.selectedItem = null;
 
 }]);
